@@ -1,6 +1,6 @@
 "use client"
 
-import { useCharacterStore } from "@/app/store/CharacterStore"
+import { thisCharacterStore } from "@/app/store/CharacterStore"
 import { Character } from "@/app/store/types"
 import { useEffect, useState } from "react"
 import { EditCharacterDialog } from "./EditCharacter"
@@ -12,7 +12,7 @@ import { Plus } from "lucide-react"
 
 
 export function TableCharacters() {
-  const { characters, fetchCharacters, isLoading, error } = useCharacterStore()
+  const { characters, fetchCharacters, isLoading, error } = thisCharacterStore()
   const [isEditModalOpen, setIsEditModalOpen] = useState(false)
   const [selectedCharacter, setSelectedCharacter] = useState<Character | null>(null)
   const router = useRouter()

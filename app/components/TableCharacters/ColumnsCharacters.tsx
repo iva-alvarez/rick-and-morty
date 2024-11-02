@@ -5,7 +5,8 @@ import { Button } from "@/components/ui/button"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { MoreHorizontal, Pencil, Trash } from "lucide-react" 
 import { Character } from "@/app/store/types"
-import { useCharacterStore } from "@/app/store/CharacterStore"
+import { thisCharacterStore } from "@/app/store/CharacterStore"
+import Image from "next/image"
 
 interface ColumnsProps {
   onEdit: (character: Character) => void
@@ -18,10 +19,11 @@ export const columnsCharacter = ({ onEdit }: ColumnsProps): ColumnDef<Character>
     accessorKey: "image",
     header: "Imagen",
     cell: ({ row }) => (
-      <img 
+      <Image
         src={row.original.image} 
         alt={row.original.name}
         className="w-12 h-12 rounded-full"
+        priority
       />
     ),
   },
@@ -73,7 +75,7 @@ export const columnsCharacter = ({ onEdit }: ColumnsProps): ColumnDef<Character>
     header: "Acciones",
     cell: ({ row }) => {
       const character = row.original
-      const { deleteCharacter } = useCharacterStore()
+      const { deleteCharacter } = thisCharacterStore()
  
       return (
         <DropdownMenu>

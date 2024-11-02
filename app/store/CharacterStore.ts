@@ -3,7 +3,7 @@ import { persist } from 'zustand/middleware';
 import { CharacterStore } from './types';
 import { apiService } from '../services/Api';
 
-export const useCharacterStore = create<CharacterStore>()(
+export const thisCharacterStore = create<CharacterStore>()(
   persist(
     (set ) => ({
       characters: [],
@@ -21,12 +21,12 @@ export const useCharacterStore = create<CharacterStore>()(
       },
 
       addCharacters: (characterData) => {
-        set((state) => ({
+        set((state: any ) => ({
           characters: [
             ...state.characters,
             {
               ...characterData,
-              id: Math.max(...state.characters.map(c => c.id), 0) + 1
+              id: Math.max(...state.characters.map((c: { id: any; }) => c.id), 0) + 1
             }
           ]
         }));

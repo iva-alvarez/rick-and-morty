@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { MoreHorizontal, Pencil, Trash } from "lucide-react" 
 import {  Episode } from "@/app/store/types"
-import { useEpisodeStore } from "@/app/store/EpisodeStore"
+import { ThisEpisodeStore } from "@/app/store/EpisodeStore"
 
 interface ColumnsProps {
   onEdit: (episode: Episode) => void
@@ -32,7 +32,7 @@ export const columnsEpisodes = ({ onEdit }: ColumnsProps): ColumnDef<Episode>[] 
     header: "Acciones",
     cell: ({ row }) => {
       const episode = row.original
-      const { deleteEpisode } = useEpisodeStore()
+      const { deleteEpisode } = ThisEpisodeStore()
  
       return (
         <DropdownMenu>

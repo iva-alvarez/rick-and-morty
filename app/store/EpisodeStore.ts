@@ -3,7 +3,7 @@ import { persist } from 'zustand/middleware';
 import { EpisodeStore } from './types';
 import { apiService } from '../services/Api';
 
-export const useEpisodeStore = create<EpisodeStore>()(
+export const ThisEpisodeStore = create<EpisodeStore>()(
   
   persist(
     (set ) => ({
@@ -22,12 +22,12 @@ export const useEpisodeStore = create<EpisodeStore>()(
       },
 
       addEpisode: (episodeData) => {
-        set((state) => ({
+        set((state: any) => ({
           episodes: [
             ...state.episodes,
             {
               ...episodeData,
-              id: Math.max(...state.episodes.map(e => e.id), 0) + 1
+              id: Math.max(...state.episodes.map((e: { id: any; }) => e.id), 0) + 1
             }
           ]
         }));

@@ -6,13 +6,13 @@ import {  DataTableEpisodes } from "./DataTableEpisodes"
 import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Plus } from "lucide-react"
-import { useEpisodeStore } from "@/app/store/EpisodeStore"
+import { ThisEpisodeStore } from "@/app/store/EpisodeStore"
 import { EditEpisodeDialog } from "./EditEpisode"
 import { columnsEpisodes } from "./ColumnsEpisodes"
 
 
 export function TableEpisodes() {
-  const { episodes, fetchEpisode, isLoading, error } = useEpisodeStore()
+  const { episodes, fetchEpisode, isLoading, error } = ThisEpisodeStore()
   const [isEditModalOpen, setIsEditModalOpen] = useState(false)
   const [selectedEpisode, setSelectedEpisode] = useState<Episode | null>(null)
   const router = useRouter()

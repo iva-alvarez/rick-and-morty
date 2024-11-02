@@ -1,6 +1,6 @@
 "use client"
 
-import { useCharacterStore } from "@/app/store/CharacterStore"
+import { thisCharacterStore } from "@/app/store/CharacterStore"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -11,7 +11,7 @@ import { useState } from "react"
 export default function CreateCharacter() {
   
   const router = useRouter()
-  const addCharacter = useCharacterStore(state => state.addCharacters)
+  const addCharacter = thisCharacterStore(state => state.addCharacters)
 
   const [formData, setFormData] = useState({
     name: "",

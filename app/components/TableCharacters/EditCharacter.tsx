@@ -13,7 +13,7 @@ import { Label } from "@/components/ui/label"
 import { useState, useEffect } from "react"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Character } from "@/app/store/types"
-import { useCharacterStore } from "@/app/store/CharacterStore"
+import { thisCharacterStore } from "@/app/store/CharacterStore"
 
 interface EditCharacterDialogProps {
   character: Character | null
@@ -26,7 +26,7 @@ export function EditCharacterDialog({
   isOpen, 
   onClose 
 }: EditCharacterDialogProps) {
-  const updateCharacter = useCharacterStore(state => state.updateCharacter)
+  const updateCharacter = thisCharacterStore(state => state.updateCharacter)
   const [formData, setFormData] = useState<Character | null>(null)
  
   useEffect(() => {

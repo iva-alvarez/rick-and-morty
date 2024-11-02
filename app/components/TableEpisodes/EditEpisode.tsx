@@ -12,7 +12,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useState, useEffect } from "react"
 import { Episode } from "@/app/store/types"
-import { useEpisodeStore } from "@/app/store/EpisodeStore"
+import { ThisEpisodeStore } from "@/app/store/EpisodeStore"
 
 
 interface EditEpisodeDialogProps {
@@ -26,7 +26,7 @@ export function EditEpisodeDialog({
   isOpen, 
   onClose 
 }: EditEpisodeDialogProps) {
-  const updateEpisode = useEpisodeStore(state => state.updateEpisode)
+  const updateEpisode = ThisEpisodeStore(state => state.updateEpisode)
   const [formData, setFormData] = useState<Episode | null>(null)
  
   useEffect(() => {

@@ -20,7 +20,7 @@ export interface CharacterStore {
   isLoading: boolean;
   error: string | null;
   fetchCharacters: () => Promise<void>;
-  addCharacters: (Character: Partial<Character>) => void;
+  addCharacters: (Character: Omit<Character , 'id' | 'image'| 'type' | 'gender'>) => void;
   updateCharacter: (id: number, character: Partial<Character>) => void;
   deleteCharacter: (id: number) => void;
 }
@@ -30,7 +30,7 @@ export interface EpisodeStore {
   isLoading: boolean;
   error: string | null;
   fetchEpisode: () => Promise<void>;
-  addEpisode: (Character: Partial<Episode>) => void;
+  addEpisode: (Character: Omit<Episode , 'id' | 'air_date'>) => void;
   updateEpisode: (id: number, character: Partial<Episode>) => void;
   deleteEpisode: (id: number) => void;
 }
